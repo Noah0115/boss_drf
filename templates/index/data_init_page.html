@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>爬虫</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body class="gray-bg">
+<!-- Bootstrap Spinner（加载动画） -->
+<div class="spinner-border text-primary mt-3" role="status" id="loading" style="display: none;">
+    <span class="sr-only">加载中...</span>
+</div>
+<div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="data_container">
+                        <button id="dataPreprocessing" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-spin" style="display: none;" id="spinner1"></i>
+                            数据预处理
+                        </button>
+                        <button id="databaseImport" class="btn btn-primary"
+                                style="background-color: #4CAF50;border: black">
+                            <i class="fa fa-spinner fa-spin" style="display: none;" id="spinner2"></i>
+                            数据库导入
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">处理结果</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyText"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Peity -->
+<script src="{% static 'js/plugins/peity/jquery.peity.min.js' %}"></script>
+<!-- 自定义js -->
+<script src="{% static 'js/content.js' %}"></script>
+<script>
+
+    $("#dataPreprocessing").click(function () {
+        // 显示旋转图标
+        $("#spinner1").show();
+        // 禁用按钮以防重复点击
+        $(this).prop('disabled', true);
+        // 发送GET请求
+        $.ajax({
+            url: '/data_init', // 修改为您的接口地址
+            type: 'GET',
+            dataType: "json",
+
+            success: function (response) {
+                // 请求成功时隐藏加载动画
+                $("#spinner1").hide();
+                $("#dataPreprocessing").prop('disabled', false);
+                console.log(response)
+                $("#modalBodyText").text(response.message);
+                $("#infoModal").modal('show');
+            },
+            error: function (xhr, status, error) {
+                // 隐藏旋转图标并启用按钮
+                $("#spinner1").hide();
+                $("#dataPreprocessing").prop('disabled', false);
+                $("#modalBodyText").text("出错了: " + error);
+                $("#infoModal").modal('show');
+            }
+        });
+    });
+
+    $("#databaseImport").click(function () {
+        // 显示旋转图标
+        $("#spinner2").show();
+        // 禁用按钮以防重复点击
+        $(this).prop('disabled', true);
+        // 发送GET请求
+        $.ajax({
+            url: '/data_to_sql', // 修改为您的接口地址
+            type: 'GET',
+            dataType: "json",
+
+            success: function (response) {
+                // 请求成功时隐藏加载动画
+                $("#spinner2").hide();
+                $("#databaseImport").prop('disabled', false);
+                console.log(response)
+                $("#modalBodyText").text(response.message);
+                $("#infoModal").modal('show');
+            },
+            error: function (xhr, status, error) {
+                // 隐藏旋转图标并启用按钮
+                $("#spinner2").hide();
+                $("#databaseImport").prop('disabled', false);
+                $("#modalBodyText").text("出错了: " + error);
+                $("#infoModal").modal('show');
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

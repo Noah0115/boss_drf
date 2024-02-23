@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>爬虫</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="row">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="wrapper wrapper-content animated fadeInRight">
+
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="input-group input-group-sm" style="position: relative;display: inline-flex;">
+                            <button type="button" class="form-control" id="start">开始爬虫</button>
+                            <button type="button" class="form-control" id="stop">停止爬虫</button>
+                        </div>
+                    </div>
+
+                    <iframe id="mainIframe" name="mainIframe" class="ibox-content forum-container"
+                            style="overflow: scroll;width: 100%;height: 543px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Peity -->
+<script src="{% static 'js/plugins/peity/jquery.peity.min.js' %}"></script>
+<!-- 自定义js -->
+<script src="{% static 'js/content.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var websocket;
+
+        $('#start').click(function () {
+            if (!websocket || websocket.readyState === WebSocket.CLOSED) {
+                websocket = new WebSocket('ws://' + window.location.host + '/ws/test/');
+                websocket.onopen = function () {
+                    // 连接建立后发送消息
+                    websocket.send(JSON.stringify({"message": "start"}));
+                };
+                websocket.onmessage = function (e) {
+                    var data = JSON.parse(e.data);
+                    var iframeDocument = $('#mainIframe')[0].contentDocument || $('#mainIframe')[0].contentWindow.document;
+
+                    var messageDiv = iframeDocument.getElementById('message-container');
+                    if (!messageDiv) {
+                        messageDiv = iframeDocument.createElement('div');
+                        messageDiv.id = 'message-container';
+                        iframeDocument.body.appendChild(messageDiv);
+                    }
+
+                    var newMessage = iframeDocument.createElement('div');
+                    newMessage.textContent = data.message;
+
+                    // 如果消息数量超过20，先折叠旧消息
+                    if (messageDiv.childElementCount >= 20) {
+                        var collapseGroup = iframeDocument.getElementById('collapse-group');
+                        if (!collapseGroup) {
+                            collapseGroup = iframeDocument.createElement('div');
+                            collapseGroup.id = 'collapse-group';
+                            collapseGroup.style.display = 'none';
+                            messageDiv.insertBefore(collapseGroup, messageDiv.firstChild);
+
+                            var toggleButton = iframeDocument.createElement('button');
+                            toggleButton.id = 'toggle-button';
+                            toggleButton.textContent = '展开旧消息';
+                            messageDiv.insertBefore(toggleButton, collapseGroup);
+
+                            toggleButton.addEventListener('click', function () {
+                                if (collapseGroup.style.display === 'none') {
+                                    collapseGroup.style.display = 'block';
+                                    toggleButton.textContent = '折叠旧消息';
+                                } else {
+                                    collapseGroup.style.display = 'none';
+                                    toggleButton.textContent = '展开旧消息';
+                                }
+                            });
+                        }
+
+                        // 移动旧消息到折叠组
+                        while (messageDiv.childElementCount > 21) {
+                            collapseGroup.appendChild(messageDiv.children[2]); // 第一个是 toggleButton, 第二个是 collapseGroup
+                        }
+                    }
+
+                    messageDiv.appendChild(newMessage);
+                    newMessage.scrollIntoView();
+                };
+
+
+                websocket.onclose = function (e) {
+                    console.log('WebSocket connection closed');
+                };
+            }
+        });
+        $('#stop').click(function () {
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
+                // 发送停止消息
+                websocket.send(JSON.stringify({"message": "stop"}));
+
+                // 关闭连接
+                websocket.close();
+            }
+        });
+    });
+</script>
+</body>
+</html>

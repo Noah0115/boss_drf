@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>查询用户</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/bootstrap-table/bootstrap-table.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        #submitButton {
+            background-color: #4CAF50; /* 设置按钮背景颜色 */
+            color: white; /* 设置文字颜色为白色 */
+            padding: 4px 10px; /* 设置内边距 */
+            border: none; /* 移除边框 */
+            border-radius: 5px; /* 设置圆角 */
+            cursor: pointer; /* 将鼠标悬停时的光标变为手指形状 */
+            font-size: 16px; /* 设置字体大小 */
+            transition: all 0.3s; /* 添加过渡效果使按钮在交互时更平滑 */
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>职业预测</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <form role="form" class="form-inline">
+                                    <!-- Django模板中 -->
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox1" value="Java">Java
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox2" value="Python">Python
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox3" value="Kafka">Kafka
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox4" value="网页设计">网页设计
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox5" value="全栈工程师">全栈工程师
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox6" value="爬虫">爬虫
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox7" value="Flutter">Flutter
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox8" value="C/C++">C/C++
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox9" value=".NET">.NET
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox10" value="Android开发经验">
+                                            Android开发经验
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox11" value="Android客户端产品研发">
+                                            Android客户端产品研发
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox12" value="硬件工程师"> 硬件工程师
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox13" value="机器学习/算法工程">
+                                            机器学习/算法工程
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox14" value="MySQL"> MySQL
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox15" value="后端开发"> 后端开发
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox16" value="Flask"> Flask
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox17" value="Django"> Django
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox18" value="Node.js"> Node.js
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox19" value="Oracle"> Oracle
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox20" value="hive"> hive
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox21" value="Linux"> Linux
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox22" value="MyBatis"> MyBatis
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox23" value="运维开发/DevOps">
+                                            运维开发/DevOps
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox24" value="网络建设/系统集成经验">
+                                            网络建设/系统集成经验
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox25" value="游戏端"> 游戏端
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox26" value="深度学习算法"> 深度学习算法
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox27" value="系统架构"> 系统架构
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox28" value="UI"> UI
+                                        </label>
+                                        <!-- 添加一个提交按钮 -->
+                                        {#                                        <button type="button" id="submitButton">预测职位</button>#}
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" id="submitButton">预测职位</button>
+                                    </div>
+                                    <div id="responseMessage"></div> <!-- 用于显示响应信息的元素 -->
+                                </form>
+                            </div>
+                            <table id="exampleTableEvents" data-height="450" data-mobile-responsive="true">
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+<!-- 全局js -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- 自定义js -->
+<script src="{% static 'js/content.js' %}"></script>
+
+
+<!-- Bootstrap table -->
+<script src="{% static 'js/plugins/bootstrap-table/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'js/plugins/bootstrap-table/bootstrap-table-mobile.min.js' %}"></script>
+<script src="{% static 'js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#submitButton').click(function () {
+            var selectedOptions = [];
+            $('input[type="checkbox"]:checked').each(function () {
+                selectedOptions.push(this.value);
+            });
+            // 获取CSRF令牌
+            var csrftoken = $('[name="csrfmiddlewaretoken"]').val();
+            $.ajax({
+                url: '/predict/', // 服务器端点URL
+                type: 'POST',
+                data: JSON.stringify(selectedOptions),
+                contentType: 'application/json',
+                beforeSend: function (xhr) {
+                    // 在请求头中设置CSRF令牌
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                },
+                success: function (response) {
+                    console.log('数据发送成功');
+                    console.log(response);
+                    var message = '根据您的技术栈，判断您从事的职位及对应概率如下：<br>';
+                    response.message.forEach(function (item) {
+                        message += item[0] + ',' + item[1] + '<br>';
+                    });
+                    $('#responseMessage').html(message); // 更新响应信息
+                },
+                error: function (xhr, status, error) {
+                    console.error('数据发送失败');
+                    $('#responseMessage').html('失败：' + error.statusText); // 更新错误信息
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
