@@ -108,7 +108,7 @@ python manage.py migrate
 
 ![image-20240130182625536](http://sapic.lyh27.top/static/upload/admin/image-20240130182625536.png)
 
-##感谢
+## 感谢
 前端可视化部分原作者[@BATFOR](https://github.com/BATFOR)
 爬虫部分原作者[@MT-BOX](https://github.com/MT-BOX)
 本项目基于两位作者的基础上进行代码更新及修改。
