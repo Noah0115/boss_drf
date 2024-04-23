@@ -46,7 +46,7 @@ python manage.py migrate
 
 ![image-20240130180638459](http://sapic.lyh27.top/static/upload/admin/image-20240130180638459.png)
 
-浏览器中打开http://127.0.0.1:7000/来访问页面
+浏览器访问 http://127.0.0.1:7000/
 
 ![image-20240130180732556](http://sapic.lyh27.top/static/upload/admin/image-20240130180732556.png)
 
