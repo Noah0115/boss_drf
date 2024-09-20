@@ -25,13 +25,13 @@ pip install -r requirements.txt
 
 接着在pycharm中进行如下设置：
 
-![image-20240130174735538](http://sapic.lyh27.top/static/upload/admin/image-20240130174735538.png)
+<img src="https://immich.lyh27.top/api/assets/24b1343c-7148-4d1f-8694-dc65b186dbbd/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130174735538" />
 
-![image-20240130180447231](http://sapic.lyh27.top/static/upload/admin/image-20240130180447231.png)
+<img src="https://immich.lyh27.top/api/assets/a5d8f99b-da5e-4215-a158-0532b8fa7e26/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130180447231" />
 
 到boss_drf文件夹下，打开settings.py，进行数据库连接修改
 
-![image-20240130183027351](http://sapic.lyh27.top/static/upload/admin/image-20240130183027351.png)
+<img src="https://immich.lyh27.top/api/assets/60deaff6-1212-4c81-a8ed-cb065094ad83/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130183027351" />
 
 然后，打开终端，输入
 
@@ -40,15 +40,15 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-![image-20240130182855863](http://sapic.lyh27.top/static/upload/admin/image-20240130182855863.png)
+<img src="https://immich.lyh27.top/api/assets/4b6df0c2-c209-4e59-b2be-000bad231cc8/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182855863" />
 
 确定后，点击运行即可
 
-![image-20240130180638459](http://sapic.lyh27.top/static/upload/admin/image-20240130180638459.png)
+<img src="https://immich.lyh27.top/api/assets/a3840c1f-c95f-44d4-8b69-d916d04e879c/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130180638459" />
 
 浏览器访问 http://127.0.0.1:7000/
 
-![image-20240130180732556](http://sapic.lyh27.top/static/upload/admin/image-20240130180732556.png)
+<img src="https://immich.lyh27.top/api/assets/171a0869-dfaa-4b9c-b91e-02ba8efa3ba8/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130180732556" />
 
 ## 模块介绍
 
@@ -62,51 +62,51 @@ python manage.py migrate
 
 **注意：由于其他模块的数据都依赖于此功能模块，务必保证爬虫完整运行，最好不要中途停止，否则影响数据预处理与数据分析、职业预测，同时不要关闭自动弹出的chrome浏览器，否则爬虫运行失败。(点击停止爬虫，稍等一会才会自动停止，同时chrome浏览器会自动关闭)**
 
-![image-20240130181344149](http://sapic.lyh27.top/static/upload/admin/image-20240130181344149.png)
+<img src="https://immich.lyh27.top/api/assets/073ae34c-0370-4f60-bf55-819df62d55e9/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130181344149" />
 
 ### 数据预处理
 
 保证“在线爬取”模块完整运行后，进入“数据预处理”模块，首先点击“数据预处理”，对爬下来的招聘信息进行数据清洗与预处理
 
-![image-20240130182029762](http://sapic.lyh27.top/static/upload/admin/image-20240130182029762.png)
+<img src="https://immich.lyh27.top/api/assets/611e55a3-d1a4-49e5-843f-eac8cf20a356/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182029762" />
 
-![image-20240130182048580](http://sapic.lyh27.top/static/upload/admin/image-20240130182048580.png)
+<img src="https://immich.lyh27.top/api/assets/a11965a8-f7ee-4aca-be61-f838c4eaf062/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182048580" />
 
 处理完毕后，接着点击“数据库导入”，将数据导入到back_jobinfo数据库表中
 
-![image-20240130182202052](http://sapic.lyh27.top/static/upload/admin/image-20240130182202052.png)
+<img src="https://immich.lyh27.top/api/assets/499b4fe1-6f1f-4e2d-bf08-501b8c46aaf3/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182202052" />
 
-![image-20240130182215780](http://sapic.lyh27.top/static/upload/admin/image-20240130182215780.png)
+<img src="https://immich.lyh27.top/api/assets/9cf6ba69-0a22-41dd-9a45-f12ec786d421/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182215780" />
 
-![image-20240130182235726](http://sapic.lyh27.top/static/upload/admin/image-20240130182235726.png)
+<img src="https://immich.lyh27.top/api/assets/10717490-b3e2-48f9-9cb2-8f6b602b138a/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182235726" />
 
 ### 数据查询
 
-![image-20240130182323054](http://sapic.lyh27.top/static/upload/admin/image-20240130182323054.png)
+<img src="https://immich.lyh27.top/api/assets/bf6bb35d-22f5-4f62-8f9a-a474657c260a/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182323054" />
 
 ### 岗位/地区平均工资
 
-![image-20240130182350657](http://sapic.lyh27.top/static/upload/admin/image-20240130182350657.png)
+<img src="https://immich.lyh27.top/api/assets/b3fb388d-21a0-42a6-96bf-8b5b556b59ed/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182350657" />
 
 ![image-20240130182401509](http://sapic.lyh27.top/static/upload/admin/image-20240130182401509.png)
 
 ### 地区热门职位
 
-![image-20240130182420868](http://sapic.lyh27.top/static/upload/admin/image-20240130182420868.png)
+<img src="https://immich.lyh27.top/api/assets/38a455ca-b4bc-4108-a83d-2ec020443aff/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182420868" />
 
 ### 地区招聘数量
 
-![image-20240130182439216](http://sapic.lyh27.top/static/upload/admin/image-20240130182439216.png)
+<img src="https://immich.lyh27.top/api/assets/1d9dbf1d-6e2b-494a-989f-44924e5afd8a/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182439216" />
 
 ### 岗位学历/经验要求
 
-![image-20240130182501863](http://sapic.lyh27.top/static/upload/admin/image-20240130182501863.png)
+<img src="https://immich.lyh27.top/api/assets/85fcc498-0a3a-4fcc-86a9-361d8f495535/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182501863" />
 
 ### 职业预测
 
 进入"职业预测"模块，选择你的技术栈，后端返回预测适合职业的概率
 
-![image-20240130182625536](http://sapic.lyh27.top/static/upload/admin/image-20240130182625536.png)
+<img src="https://immich.lyh27.top/api/assets/08bad591-1710-4aee-bca6-f9e05e6fd726/thumbnail?size=preview&key=25V6Vu9F_RRr2dJRHv9neJzgAYlcc4v8m9nc51VCXZcwhXYMn8GwtfaJuVsBitUCJq8" alt="image-20240130182625536" />
 
 ## 感谢
 前端可视化部分原作者[@BATFOR](https://github.com/BATFOR)
